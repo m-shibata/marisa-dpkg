@@ -1,0 +1,79 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+# This has to be exported to make some magic below work.
+export DH_OPTIONS
+
+# These commands build the list of supported Python 3 versions
+# The last version should be just “python3” so that the scripts
+# get a correct shebang.
+# Use just “PYTHON3 := $(shell py3versions -r)” if your package
+# doesn’t contain scripts
+PY3REQUESTED := $(shell py3versions -r)
+PY3DEFAULT := $(shell py3versions -d)
+PYTHON3 := $(filter-out $(PY3DEFAULT),$(PY3REQUESTED)) python3
+
+# For set install path of perl modules.
+PERL_VENDOR_ARCH=$(shell perl -V:vendorarch|cut -d\' -f2)
+
+DEB_HOST_MULTIARCH ?= $(shell dpkg-architecture -qDEB_HOST_MULTIARCH)
+
+PKG_VERSION = $(shell dpkg-parsechangelog | grep ^Version: | cut -d' ' -f2 | cut -f 1 -d -)
+
+%:
+	dh $@  --with autotools-dev --with python2,python3
+
+override_dh_auto_configure:
+	dh_auto_configure
+	make -C bindings
+	cd bindings/python; sed -i "s/__version__/$(PKG_VERSION)/" setup.py
+	cd bindings/perl; perl Makefile.PL \
+	    INSTALL_BASE=$(CURDIR)/debian/libmarisa-perl/usr \
+	    INSTALLARCHLIB=$(CURDIR)/debian/libmarisa-perl$(PERL_VENDOR_ARCH) \
+	    INSTALLSITEARCH=$(CURDIR)/debian/libmarisa-perl$(PERL_VENDOR_ARCH) \
+	    INSTALLVENDORARCH=$(CURDIR)/debian/libmarisa-perl$(PERL_VENDOR_ARCH) \
+	    INC="-I../../lib" \
+	    LIBS="-L../../lib/.libs" \
+	    CCFLAGS="$(shell dpkg-buildflags --get CFLAGS) $(shell dpkg-buildflags --get CPPFLAGS)" \
+	    LDDLFLAGS="-shared -L/usr/local/lib -fstack-protector $(shell dpkg-buildflags --get LDFLAGS)"
+
+override_dh_auto_build:
+	dh_auto_build
+	# Build for each Python 3 version
+	cd bindings/python; \
+	    set -ex; for python in $(PYTHON3); do \
+	    $$python setup.py build_ext --include-dirs=../../lib \
+	        --library-dirs=../../lib/.libs; \
+	    done
+	cd bindings/python; \
+	    python2 setup.py build_ext --include-dirs=../../lib \
+	        --library-dirs=../../lib/.libs
+	cd bindings/perl; make
+	# extconf.rb needs to exist library when configure
+	cd bindings/ruby; ruby extconf.rb --with-opt-include=../../lib \
+	    --with-opt-lib=../../lib/.libs
+	# set verbose option for compiling
+	sed -i 's/^V = 0/V = 1/' bindings/ruby/Makefile
+	cd bindings/ruby; make
+
+override_dh_auto_install:
+	dh_auto_install
+	# The same for install; note the --install-layout=deb option
+	cd bindings/python; \
+	    set -ex; for python in $(PYTHON3); do \
+	    $$python setup.py install \
+	        --root=$(CURDIR)/debian/python3-marisa --install-layout=deb; \
+	    done
+	cd bindings/python; \
+	    python2 setup.py install \
+	        --root=$(CURDIR)/debian/python-marisa --install-layout=deb
+	# install perl modules
+	cd bindings/perl; make install
+	rm $(CURDIR)/debian/libmarisa-perl$(PERL_VENDOR_ARCH)/auto/marisa/.packlist
+	rm $(CURDIR)/debian/libmarisa-perl$(PERL_VENDOR_ARCH)/perllocal.pod
+	rm $(CURDIR)/debian/libmarisa-perl$(PERL_VENDOR_ARCH)/sample.pl
+	# install ruby modules
+	cd bindings/ruby; make install DESTDIR=$(CURDIR)/debian/ruby-marisa \
+	    sitedir=$(CURDIR)/debian/ruby-marisa/usr/lib/ruby

@@ -1,0 +1,28 @@
+marisa (0.2.4-3) unstable; urgency=low
+
+  * Updated patch for DEP3.
+  * Auto generate version for python/setup.py.
+  * Fixed install path for ruby bindings.
+  * Exec extconf.rb after building libmarisa.
+
+ -- Mitsuya Shibata <mty.shibata@gmail.com>  Sun, 17 Nov 2013 18:56:22 +0900
+
+marisa (0.2.4-2) unstable; urgency=low
+
+  * Fixed problems pointed out by sponsor.
+    - Removed full stops from short descriptions.
+    - Renamed perl package name as per Perl Policy §4.2.
+    - Changed path of perl modules.
+    - Refined compile options.
+    - Fixed dpkg-gencontrol warnings.
+    - Added manpages.
+  * module-version-for-egg-inof.patch
+    - For lintian4py warning, python module version in setup.py is specified.
+
+ -- Mitsuya Shibata <mty.shibata@gmail.com>  Wed, 14 Aug 2013 19:29:20 +0900
+
+marisa (0.2.4-1) unstable; urgency=low
+
+  * Initial release (Closes: #714453)
+
+ -- Mitsuya Shibata <mty.shibata@gmail.com>  Sat, 29 Jun 2013 10:53:00 +0900

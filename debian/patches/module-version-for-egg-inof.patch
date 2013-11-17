@@ -1,0 +1,18 @@
+Description: Use FHS compliant paths by default
+ For lintian4py warning, python module version in setup.py is specified.
+ .
+ This is pointed out by following comment.
+ http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=714734#68
+Author: Mitsuya Shibata <mty.shibata@gmail.com>
+Last-Update: 2013-11-17
+Index: marisa/bindings/python/setup.py
+===================================================================
+--- marisa.orig/bindings/python/setup.py	2013-11-17 18:46:47.402515675 +0900
++++ marisa/bindings/python/setup.py	2013-11-17 18:48:08.270517730 +0900
+@@ -5,5 +5,6 @@
+                           libraries=["marisa"])
+ 
+ setup(name = "marisa",
++      version = "__version__",
+       ext_modules = [marisa_module],
+       py_modules = ["marisa"])
