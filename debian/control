@@ -7,6 +7,8 @@ Build-Depends: debhelper (>= 9), autotools-dev,
     perl, ruby, ruby-dev, swig
 Standards-Version: 3.9.4
 Homepage: https://code.google.com/p/marisa-trie/
+Vcs-Browser: https://github.com/m-shibata/marisa-dpkg
+Vcs-Git: git://github.com/m-shibata/marisa-dpkg.git
 
 Package: marisa
 Section: utils
