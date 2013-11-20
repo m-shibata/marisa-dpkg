@@ -1,3 +1,9 @@
+marisa (0.2.4-4) unstable; urgency=low
+
+  * Added Vcs-Browser and Vcs-Git fields
+
+ -- Mitsuya Shibata <mty.shibata@gmail.com>  Wed, 20 Nov 2013 21:58:19 +0900
+
 marisa (0.2.4-3) unstable; urgency=low
 
   * Updated patch for DEP3.
