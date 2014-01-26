@@ -1,3 +1,10 @@
+marisa (0.2.4-5) unstable; urgency=medium
+
+  * Use dh-autoreconf instead of autotools-dev to fix FTBFS on ppc64el.
+    Thanks to Logan Rosen for the report. (Closes: #736696)
+
+ -- Mitsuya Shibata <mty.shibata@gmail.com>  Sun, 26 Jan 2014 15:13:59 +0900
+
 marisa (0.2.4-4) unstable; urgency=low
 
   * Initial upload to Debian archive (Closes: #714453)
