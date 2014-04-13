@@ -56,6 +56,7 @@ override_dh_auto_build:
 	    --with-opt-lib=../../lib/.libs
 	# set verbose option for compiling
 	sed -i 's/^V = 0/V = 1/' bindings/ruby/Makefile
+	sed -i 's%^sitearchdir = .*%sitearchdir = $$(exec_prefix)/lib/$(DEB_HOST_MULTIARCH)/ruby/$$(ruby_version)%' bindings/ruby/Makefile
 	cd bindings/ruby; make
 
 override_dh_auto_install:
@@ -75,5 +76,4 @@ override_dh_auto_install:
 	rm $(CURDIR)/debian/libmarisa-perl$(PERL_VENDOR_ARCH)/perllocal.pod
 	rm $(CURDIR)/debian/libmarisa-perl$(PERL_VENDOR_ARCH)/sample.pl
 	# install ruby modules
-	cd bindings/ruby; make install DESTDIR=$(CURDIR)/debian/ruby-marisa \
-	    sitedir=$(CURDIR)/debian/ruby-marisa/usr/lib/ruby
+	cd bindings/ruby; make install DESTDIR=$(CURDIR)/debian/ruby-marisa

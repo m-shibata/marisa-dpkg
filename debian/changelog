@@ -1,3 +1,10 @@
+marisa (0.2.4-6) unstable; urgency=medium
+
+  * support building with Ruby 2.0/2.1 (Closes:  #743989)
+    Thanks to Christian Hofstaedtler for the report.
+
+ -- Mitsuya Shibata <mty.shibata@gmail.com>  Sun, 13 Apr 2014 23:27:56 +0900
+
 marisa (0.2.4-5) unstable; urgency=medium
 
   * Use dh-autoreconf instead of autotools-dev to fix FTBFS on ppc64el.
