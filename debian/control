@@ -9,6 +9,7 @@ Standards-Version: 3.9.5
 Homepage: https://code.google.com/p/marisa-trie/
 Vcs-Browser: https://github.com/m-shibata/marisa-dpkg
 Vcs-Git: git://github.com/m-shibata/marisa-dpkg.git
+XS-Testsuite: autopkgtest
 
 Package: marisa
 Section: utils
