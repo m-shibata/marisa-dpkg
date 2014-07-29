@@ -37,7 +37,7 @@ override_dh_auto_configure:
 	    INC="-I../../lib" \
 	    LIBS="-L../../lib/.libs" \
 	    CCFLAGS="$(shell dpkg-buildflags --get CFLAGS) $(shell dpkg-buildflags --get CPPFLAGS)" \
-	    LDDLFLAGS="-shared -L/usr/local/lib -fstack-protector $(shell dpkg-buildflags --get LDFLAGS)"
+	    LDDLFLAGS="-shared -L/usr/local/lib -L../../lib/.libs -lmarisa -fstack-protector $(shell dpkg-buildflags --get LDFLAGS)"
 
 override_dh_auto_build:
 	dh_auto_build
