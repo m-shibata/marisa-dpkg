@@ -1,0 +1,21 @@
+Description: s390x and sparc64 support to check wordsize
+Author: Aurelien Jarno <aurel32@debian.org>
+Author: Guo Yixuan (郭溢譞) <culu.gyx@gmail.com>
+Bug: https://code.google.com/p/marisa-trie/issues/detail?id=22
+Bug-Debian: http://bugs.debian.org/739126
+Bug-Debian: http://bugs.debian.org/755560
+
+Index: marisa-dpkg/lib/marisa/base.h
+===================================================================
+--- marisa-dpkg.orig/lib/marisa/base.h	2014-07-29 14:44:40.250212261 +0900
++++ marisa-dpkg/lib/marisa/base.h	2014-07-30 21:55:24.405909617 +0900
+@@ -30,7 +30,8 @@
+ 
+ #if defined(_WIN64) || defined(__amd64__) || defined(__x86_64__) || \
+     defined(__ia64__) || defined(__ppc64__) || defined(__powerpc64__) || \
+-    defined(__sparc64__) || defined(__mips64__) || defined(__aarch64__)
++    ( defined(__sparc__) && defined(__arch64__) ) || \
++    defined(__mips64__) || defined(__aarch64__) || defined(__s390x__)
+  #define MARISA_WORD_SIZE 64
+ #else  // defined(_WIN64), etc.
+  #define MARISA_WORD_SIZE 32
