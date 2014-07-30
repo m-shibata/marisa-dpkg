@@ -1,3 +1,12 @@
+marisa (0.2.4-7) unstable; urgency=medium
+
+  * Fix missing link for libmarisa-perl
+  * Fix FTBFS on s390x/sparc64 (Closes: #739126, #755560)
+    Thanks to Aurelien Jarno and Guo Yixuan for the report.
+  * Support DEP8/autopkgtest
+
+ -- Mitsuya Shibata <mty.shibata@gmail.com>  Thu, 31 Jul 2014 02:32:22 +0900
+
 marisa (0.2.4-6) unstable; urgency=medium
 
   * support building with Ruby 2.0/2.1 (Closes:  #743989)
