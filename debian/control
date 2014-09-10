@@ -80,7 +80,7 @@ Package: ruby-marisa
 Section: ruby
 Architecture: any
 Multi-Arch: foreign
-Depends: libmarisa0 (= ${binary:Version}), ${shlibs:Depends}, ${misc:Depends}
+Depends: libmarisa0 (= ${binary:Version}), ruby, ${shlibs:Depends}, ${misc:Depends}
 Description: Ruby bindings for MARISA
  Matching Algorithm with Recursively Implemented StorAge (MARISA) is a static
  and space-efficient trie data structure.
