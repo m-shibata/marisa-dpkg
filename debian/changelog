@@ -1,6 +1,6 @@
 marisa (0.2.4-8) unstable; urgency=medium
 
-  * add ruby as a new dependency for ruby-marisa (Closes: #75927)
+  * add ruby as a new dependency for ruby-marisa (Closes: #759527)
     Thanks to Lucas Kanashiro for the report.
   * set Maintainer as pkg-ime and add Uploaders me
   * split multi lines Depends and Build-Depends
