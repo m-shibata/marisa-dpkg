@@ -1,12 +1,18 @@
 marisa (0.2.4-8) unstable; urgency=medium
 
+  [debian/control]
   * add ruby as a new dependency for ruby-marisa (Closes: #759527)
     Thanks to Lucas Kanashiro for the report.
   * set Maintainer as pkg-ime and add Uploaders me
   * split multi lines Depends and Build-Depends
+
+  [debian/libmarisa0.symbols]
   * add libmarisa0.symbols
 
- -- Mitsuya Shibata <mty.shibata@gmail.com>  Thu, 11 Sep 2014 11:35:02 +0900
+  [debian/copyright]
+  * fix invalid copyright information
+
+ -- Mitsuya Shibata <mty.shibata@gmail.com>  Fri, 12 Sep 2014 16:09:15 +0900
 
 marisa (0.2.4-7) unstable; urgency=medium
 
