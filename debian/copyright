@@ -4,7 +4,7 @@ Source: https://code.google.com/p/marisa-trie/
 
 Files: *
 Copyright: 2010 - 2013 Susumu Yata
-License: BSD-3-clause or LGPL-2
+License: BSD-3-clause or LGPL-2.1+
  libmarisa and its command line tools are dual-licensed under the BSD 2-clause license and the LGPL.
  .
  * The BSD 2-clause license
