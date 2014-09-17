@@ -1,4 +1,4 @@
-usr/lib/*/libmarisa.a
-usr/lib/*/lib*.so
-usr/lib/*/pkgconfig/marisa.pc
 usr/include/*
+usr/lib/*/lib*.so
+usr/lib/*/libmarisa.a
+usr/lib/*/pkgconfig/marisa.pc

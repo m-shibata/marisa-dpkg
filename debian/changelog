@@ -6,9 +6,6 @@ marisa (0.2.4-8) unstable; urgency=medium
   * set Maintainer as pkg-ime and add Uploaders me
   * split multi lines Depends and Build-Depends
 
-  [debian/libmarisa0.symbols]
-  * add libmarisa0.symbols
-
   [debian/copyright]
   * fix invalid copyright information
 
