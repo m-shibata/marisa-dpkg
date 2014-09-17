@@ -1,2 +1,3 @@
 module-version-for-egg-inof.patch
 wordsize-test-for-some-archs.patch
+support-mips64el.patch
