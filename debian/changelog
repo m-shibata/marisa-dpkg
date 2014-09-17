@@ -12,7 +12,11 @@ marisa (0.2.4-8) unstable; urgency=medium
   [debian/copyright]
   * fix invalid copyright information
 
- -- Mitsuya Shibata <mty.shibata@gmail.com>  Fri, 12 Sep 2014 16:09:15 +0900
+  [debian/patches/support-mips64el.patch]
+  * fix ftbfs on mips64el (Closes: #762001)
+    Thanks to YunQiang Su for the report.
+
+ -- Mitsuya Shibata <mty.shibata@gmail.com>  Thu, 18 Sep 2014 01:16:29 +0900
 
 marisa (0.2.4-7) unstable; urgency=medium
 
