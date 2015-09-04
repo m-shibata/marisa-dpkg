@@ -1,3 +1,13 @@
+marisa (0.2.4-9) UNRELEASED; urgency=medium
+
+  [debian/control]
+  * Bump standards version to 3.9.6
+  * add dh-phtyon to Build-Depends
+  * remove no longer needed XS-Testsuite field
+  * fix typo
+
+ -- Mitsuya Shibata <mty.shibata@gmail.com>  Sat, 05 Sep 2015 04:09:24 +0900
+
 marisa (0.2.4-8) unstable; urgency=medium
 
   [debian/control]
